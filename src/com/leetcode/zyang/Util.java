@@ -71,27 +71,4 @@ public class Util {
 		
 		return result;
 	}
-	
-	public static TreeNode createTree(int n) {
-		if (n == 0)
-			return null;
-		
-		TreeNode tree = new TreeNode(2*n+1);
-		
-		if (n == 1) 
-			return tree;
-		
-		if (n == 2) {
-			TreeNode nodeLeft = new TreeNode(2*n-1);
-			TreeNode nodeRight = new TreeNode(2*n);
-			tree.left = nodeLeft;
-			tree.right = nodeRight;
-		}
-			
-		for (int i = n-1; i > -1; i--) {
-			tree.left = createTree(i-1);
-			tree.right = createTree(i);
-		}
-		return tree;		
-	}
 }
