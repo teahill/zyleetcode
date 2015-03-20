@@ -43,6 +43,9 @@ public class BinaryTreeSerializer {
 	}
 	
 	private static Pair deserializeRecursively(List<String> strs, int startIndex) {
+		if (startIndex >= strs.size())
+			return new Pair (null, startIndex + 1);
+		
 		String str = strs.get(startIndex);
 		
 		if ( str == "#") {
@@ -51,10 +54,12 @@ public class BinaryTreeSerializer {
 		
 		TreeNode node = new TreeNode(Integer.valueOf(str));
 		Pair pairLeft = deserializeRecursively(strs, startIndex + 1);
-		node.left = pairLeft.node;
+		if (node != null)
+			node.left = pairLeft.node;
 		
 		Pair pairRight = deserializeRecursively(strs, pairLeft.startIndex);
-		node.right = pairRight.node;
+		if (node != null)
+			node.right = pairRight.node;
 		
 		return new Pair(node, pairRight.startIndex);
 	}
