@@ -1,8 +1,8 @@
 package com.leetcode.zyang;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 
@@ -32,8 +32,9 @@ public class L0112_PathSum {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		L0112_PathSum pathSum = new L0112_PathSum();
-		
+
 		List<String> strs = new ArrayList<String>();		
+		/**
 		strs.add("5");
 		strs.add("4");
 		strs.add("11");
@@ -53,32 +54,75 @@ public class L0112_PathSum {
 		strs.add("1");
 		strs.add("#");
 		strs.add("#");
-		
+
 		int sum = 22;
-		
+		 */
+
+		strs.add("-2");
+		strs.add("#");
+		strs.add("-3");
+		strs.add("#");
+		strs.add("#");	
+
+		int sum = -5;
+
 		System.out.println("Input = " + strs);
-		
+
 		TreeNode root = BinaryTreeSerializer.deserialize(strs);
-		
+
 		System.out.println("result = " + BinaryTreeSerializer.serialize(root));
-		
+
 		boolean result = pathSum.hasPathSum(root, sum);
-		
+
 		System.out.println("result = " + result);
 	}
 
-    public boolean hasPathSum(TreeNode root, int sum) {      
-    	if (root == null)
-    		if (sum == 0)
-    			return true;
-    		else 
-    			return false;
-    	
-    	int remainder = sum - root.val;
-    	
-    	if (remainder < 0)
-    		return false;
-    	else 
-    		return (hasPathSum(root.left, remainder) || hasPathSum(root.right, remainder));            	
-    }    
+	//Recursive o(nlogn)?
+	public boolean hasPathSum(TreeNode root, int sum) {      
+		if (root == null)
+			return false;
+
+		if (sum == root.val && root.left == null && root.right == null)
+			return true;
+
+		int remainder = sum - root.val;
+		
+		boolean left = false;
+		boolean right = false;
+		if (root.left != null)
+			left = hasPathSum(root.left, remainder);
+		
+		if (root.right != null)
+			right = hasPathSum(root.right, remainder);
+		
+		return (left || right);            	
+	}    
+
+	// Iterative o(n)?
+	public boolean hasPathSumIterative(TreeNode root, int sum) {
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        Stack<Integer> sums = new Stack<Integer>();
+
+        stack.push(root);
+        sums.push(sum);
+        while(!stack.isEmpty()&&(root!=null)){
+            int value = sums.pop();
+            TreeNode top = stack.pop();
+
+            if(top.left==null&&top.right==null&&top.val==value){
+                return true;
+            }
+            if(top.right!=null){
+                stack.push(top.right);
+                sums.push(value-top.val);
+            }
+            if(top.left!=null){
+                stack.push(top.left);
+                sums.push(value-top.val);
+            }
+
+        }
+        return false;
+	}
 }
+

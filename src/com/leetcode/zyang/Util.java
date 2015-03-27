@@ -60,6 +60,22 @@ public class Util {
 		return head;
 	}
 	
+	public static ListNode mergeList(ListNode listA, ListNode listB) {
+		if (listA == null)
+			return listB;
+		
+		if (listB == null)
+			return listA;
+		
+		ListNode node = listA;
+		while (node != null && node.next != null) 
+				node = node.next;							
+		
+		node.next = listB;
+		
+		return listA;
+	}
+	
 	public static String printArray(int[] in) {
 		String result = "{";
 		
