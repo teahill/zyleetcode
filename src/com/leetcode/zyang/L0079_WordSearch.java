@@ -27,8 +27,73 @@ public class L0079_WordSearch {
 		// TODO Auto-generated constructor stub
 	}
 
-    public boolean exist(char[][] board, String word) {
-    	if (word == null || word == "")
+	public boolean exist(char[][] board, String word) {
+		if (word == null || word.length() == 0)
+			return false;
+
+		if (board == null || board.length == 0 || board[0].length == 0)
+			return false;
+
+		int m = board.length;
+		int n= board[0].length;
+		int[][] occupied = new int[m][];
+		for (int i = 0; i < m; i++) {
+			occupied[i] = new int[n];
+			for (int j = 0; j < n; j++)
+				occupied[i][j] = 0;
+		}    	
+
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				boolean exist = existInternal(board, m, n, i, j, word, 0, occupied);
+				if (exist)
+					return exist;
+			}    		
+		}   
+		
+		return false;
+	}
+    
+	private boolean existInternal(char[][] board, int m, int n, int x, int y, String word, int k, int [][] occupied) {
+		if (k == word.length())
+			return true;
+		
+		boolean exist = false;
+		if (x < m && x >= 0 && y >= 0 && y < n && occupied[x][y] == 0) {
+			if (word.charAt(k) != board[x][y])
+				return exist;
+			
+			occupied[x][y] = 1;
+			
+			//move right
+			exist = existInternal(board, m, n, x, y + 1, word, k + 1, occupied);
+			if (exist)
+				return exist;
+			
+			//move left
+			exist = existInternal(board, m, n, x, y -1, word, k + 1, occupied);
+			if (exist)
+				return exist;
+			
+			//move up
+			exist = existInternal(board, m, n, x - 1, y, word, k + 1, occupied);
+			if (exist)
+				return exist;
+			
+			//move down
+			exist = existInternal(board, m, n, x + 1, y, word, k + 1, occupied);
+			if (exist)
+				return exist;
+			
+			occupied[x][y] = 0;
+		}
+		
+		return exist;
+	}
+	
+	// first solution, works, but not clean;
+    public boolean exist1(char[][] board, String word) {
+    	if (word == null || word.length() == 0)
     		return false;
     	
     	if (board == null || board.length == 0 || board[0].length == 0)

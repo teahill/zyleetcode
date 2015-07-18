@@ -36,7 +36,7 @@ public class L0078_Subsets {
 		// TODO Auto-generated constructor stub
 	}
 
-    public List<List<Integer>> subsets(int[] S) {
+    public List<List<Integer>> subsets2(int[] S) {
         List<List<Integer>> allList = new ArrayList<List<Integer>>();
         List<Integer> list = new ArrayList<Integer>();
         
@@ -78,6 +78,31 @@ public class L0078_Subsets {
     	
     	return allList;
     }  
+    
+    public List<List<Integer>> subsets(int[] S) {
+    	List<List<Integer>> all = new ArrayList<List<Integer>>();
+    	
+    	// Seed empty list
+    	List<Integer> list = new ArrayList<Integer>();    	
+    	all.add(list);
+    	
+    	if (S == null || S.length == 0)
+    		return all;
+    	
+    	Arrays.sort(S);
+    	
+    	int size = S.length;    	
+    	for (int i = 0; i < size; i++) {
+    		int len = all.size();
+    		for (int j = 0; j < len; j++) {
+        		List<Integer> newList = new ArrayList<Integer>(all.get(j));
+        		newList.add(S[i]);
+    			all.add(newList);
+    		}    		
+    	}    	
+    	
+    	return all;
+    }
     
     // Iterative, from Leetcode
     public List<List<Integer>> subsets1(int[] S) {
