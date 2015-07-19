@@ -38,6 +38,22 @@ public class CreateBinarySearchTree {
         }
     }
     
+    public TreeNode find(int item) {
+    	TreeNode node = root;
+    	
+    	while (node != null) {
+	    	if (item == node.val) 
+	    		return node;
+	    	
+	    	if (item < node.val) 
+	            node = node.left;
+	    	else
+	    		node = node.right;
+    	}
+    	
+    	return null;
+    }
+    
     @Override
     public String toString() {
         return toString(root);

@@ -2006,7 +2006,7 @@ public class L0200_TestSuite {
 		System.out.println("foundKey: " + foundKey);
 	}
 	
-	@Test
+	//@Test
 	public void L0212_WordSearchII() {
 		L0212_WordSearchII wdSearchII = new L0212_WordSearchII();
 		
@@ -2029,5 +2029,137 @@ public class L0200_TestSuite {
 		List<String> list = wdSearchII.findWords(board, words);
 		
 		System.out.println("output = " + list);
+	}
+	
+	//@Test
+	public void L0235_LowestCommonAncestorBinarySearchTree() {
+		L0235_LowestCommonAncestorBinarySearchTree lcaTree = new L0235_LowestCommonAncestorBinarySearchTree();
+		/*
+		 *         _______6______
+		 *        /              \
+		 *     ___2__          ___8__
+		 *    /      \        /      \
+		 *    0      _4       7       9
+		 *          /  \
+		 *          3   5
+		 */
+		CreateBinarySearchTree bTree = new CreateBinarySearchTree();
+		bTree.add(6, 2, 8, 0, 4, 7, 9, 3, 5);
+		
+		TreeNode p = bTree.find(6);
+		TreeNode q = bTree.find(5);
+		
+		System.out.println("BST = " + bTree.toString());
+		
+		TreeNode lca = lcaTree.lowestCommonAncestor(bTree.root, p, q);
+		
+		System.out.println(lca.val);
+	}
+	
+	//@Test
+	public void L0236_LowestCommonAncestorBinaryTree() {
+		L0236_LowestCommonAncestorBinaryTree lcaTree = new L0236_LowestCommonAncestorBinaryTree();
+		
+		/*
+	     *         _______3______
+		 *        /              \
+		 *     ___5__          ___1__
+		 *    /      \        /      \
+		 *    6      _2       0       8
+		 *          /  \
+		 *          7   4
+		 *          
+		 */
+		
+		List<String> list = new ArrayList<String>();
+		list.add("3");
+		list.add("5");
+		list.add("6");
+		list.add("#");
+		list.add("#");
+		list.add("2");
+		list.add("7");
+		list.add("#");
+		list.add("#");
+		list.add("4");
+		list.add("#");
+		list.add("#");
+		list.add("1");
+		list.add("0");
+		list.add("#");
+		list.add("#");
+		list.add("8");
+		list.add("#");
+		list.add("#");
+		
+		TreeNode root = BinaryTreeSerializer.deserialize(list);
+		
+		TreeNode p = BinaryTreeSerializer.find(root, 6);
+		TreeNode q = BinaryTreeSerializer.find(root, 8);	
+		
+		TreeNode lca = lcaTree.lowestCommonAncestor(root, p, q);
+		
+		System.out.println(lca.val);
+	}
+	
+	//@Test
+	public void L0230_KthSmallElemBST() {
+		/*
+		 *         _______6______
+		 *        /              \
+		 *     ___2__          ___8__
+		 *    /      \        /      \
+		 *    0      _4       7       9
+		 *          /  \
+		 *          3   5
+		 */
+		
+		L0230_KthSmallElemBST bst = new L0230_KthSmallElemBST();
+		
+		CreateBinarySearchTree bTree = new CreateBinarySearchTree();
+		bTree.add(6, 2, 8, 0, 4, 7, 9, 3, 5);
+		
+		int k = 9;
+		
+		System.out.println("BST = " + bTree.toString());
+		
+		int val = bst.kthSmallest(bTree.root, k);
+		
+		System.out.println(val);
+	}
+	
+	//@Test
+	public void L0231_PowerOfTwo() {
+		L0231_PowerOfTwo power = new L0231_PowerOfTwo();
+		
+		int n = 1;
+		
+		boolean result = power.isPowerOfTwo(n);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0234_PalindromeLinkedList() {
+		L0234_PalindromeLinkedList palinLL = new L0234_PalindromeLinkedList();
+		
+		int[] nums = new int[] {1, 1, 2, 1};
+		ListNode head = Util.createList(nums);
+		
+		boolean result = palinLL.isPalindrome(head);
+		
+		System.out.println(result);
+		System.out.println(Util.printList(head));
+	}
+	
+	@Test
+	public void L0238_ProductArrayExceptSelf() {
+		L0238_ProductArrayExceptSelf product = new L0238_ProductArrayExceptSelf();
+		
+		int[] nums = new int[] {2, 2, 3, 4, 5};
+		
+		int[] output = product.productExceptSelf(nums);
+		
+		System.out.println(Util.printArray(output));
 	}
 }

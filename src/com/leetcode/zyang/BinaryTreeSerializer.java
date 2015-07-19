@@ -31,6 +31,21 @@ public class BinaryTreeSerializer {
 		
 	}
 	
+	public static TreeNode find (TreeNode root, int n) {
+		if (root == null)
+			return null;
+		
+		TreeNode node = root;				
+		if (root.val == n)
+			return root;
+		
+		node = find(root.left, n);
+		if (node != null)
+			return node;
+		
+		node = find(root.right, n);
+		return node;
+	}
 	
 	// Pre-Order
 	public static TreeNode deserialize(List<String> strs) {
