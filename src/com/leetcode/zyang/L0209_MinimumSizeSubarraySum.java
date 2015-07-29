@@ -32,7 +32,7 @@ public class L0209_MinimumSizeSubarraySum {
         		continue;
         	else {
         		min = (min == 0) ? n : min;
-        		while (sum - nums[ptr2] >= s) {
+        		while (sum - nums[ptr2] >= s && ptr2 <= ptr1) {
         			sum = sum - nums[ptr2];
         			ptr2++;
         			n--;
