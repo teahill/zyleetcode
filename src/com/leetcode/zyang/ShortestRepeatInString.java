@@ -6,8 +6,32 @@ public class ShortestRepeatInString {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	// between O(n^2), O(n)?
 	public String getShortestRepeat(String str) {
+		if (str == null || str.length() <= 1)
+			return str;
+
+		String pattern = str.substring(0, 1);
+		int i = 0;
+		while (i < str.length()) {
+			if (pattern.charAt(i % pattern.length()) != str.charAt(i)) {
+				pattern = str.substring(0, i / pattern.length() * pattern.length() + 1);
+				i = pattern.length();
+				continue;
+			}
+			
+			i++;
+		}
+		
+		if (str.length() % pattern.length() == 0)
+			return pattern;
+		else 
+			return str;
+		
+	}
+	
+	// O(n^2)
+	public String getShortestRepeat1(String str) {
 		if (str == null || str.length() <= 1)
 			return str;
 		
