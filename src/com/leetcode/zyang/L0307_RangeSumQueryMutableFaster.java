@@ -16,6 +16,9 @@ package com.leetcode.zyang;
  *         You may assume the number of calls to update and sumRange function is distributed evenly.
  *         
  *         Use Segment Tree to achieve O(logn)
+ *         
+ *         http://www.geeksforgeeks.org/segment-tree-set-1-range-minimum-query/
+ *         
  */
 
 public class L0307_RangeSumQueryMutableFaster {

@@ -17,6 +17,8 @@ import java.util.Arrays;
  *         Your algorithm should run in O(n2) complexity.
  * 
  *         Follow up: Could you improve it to O(n log n) time complexity?
+ *         
+ *         http://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
  */
 public class L0300_LongestIncreasingSubsequence {
 
