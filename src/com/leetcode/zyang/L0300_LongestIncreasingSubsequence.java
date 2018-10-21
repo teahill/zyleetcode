@@ -18,7 +18,15 @@ import java.util.Arrays;
  * 
  *         Follow up: Could you improve it to O(n log n) time complexity?
  *         
+ *         Patience Sorting nlogn -
  *         http://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
+ *         
+ *         Longest common subsequence -
+ *         https://en.wikipedia.org/wiki/Longest_common_subsequence_problem
+ *         
+ *         
+ *         http://stackoverflow.com/questions/2631726/how-to-determine-the-longest-increasing-subsequence-using-dynamic-programming
+ *         
  */
 public class L0300_LongestIncreasingSubsequence {
 

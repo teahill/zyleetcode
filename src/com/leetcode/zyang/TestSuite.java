@@ -3,11 +3,10 @@
  */
 package com.leetcode.zyang;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +20,7 @@ import org.junit.Test;
  * @author zyang
  *
  */
-public class L0200_TestSuite {
+public class TestSuite {
 
 	/**
 	 * @throws java.lang.Exception
@@ -809,6 +808,51 @@ public class L0200_TestSuite {
 		int result = stockII.maxProfit(prices);
 		
 		System.out.println("output: " + result);		
+	}
+	
+	//@Test
+	public void L0123_BestTimeBuySellStockIII () {
+		L0123_BestTimeBuySellStockIII stock = new L0123_BestTimeBuySellStockIII();
+		
+		int[] prices = new int[] {3,2,6,5,0,3, 1, 10}; 	// 14
+		//int[] prices = new int[] {6,1,3,2,4,7};				// 7
+		
+		//int[] prices = new int[] {};
+		System.out.println("input: " + Util.printArray(prices));
+		
+		int result = stock.maxProfit(prices);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0188_BestTimeBuySellStockIV() {
+		L0188_BestTimeBuySellStockIV stock = new L0188_BestTimeBuySellStockIV();
+		
+		int[] prices = new int[] {3,2,6,5,0,3, 1, 10}; // k = 3, 16
+		//int[] prices = new int[] {6,1,3,2,4,7};	// k = 3, 7
+		//int[] prices = new int[] {};
+		int k = 3;
+		
+		System.out.println("input: " + Util.printArray(prices));
+		
+		int result = stock.maxProfit(k, prices);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0309_BestTimeBuySellStockCooldown() {
+		L0309_BestTimeBuySellStockCooldown stock = new L0309_BestTimeBuySellStockCooldown();
+		
+		// int[] prices = new int[] {3,2,6,5,0,3, 1, 10}; // 14
+		// int[] prices = new int[] {1, 2, 3, 0, 2}; 		//3
+		 int[] prices = new int[] {6,1,3,2,4,7};	// 6 
+		// int[] prices = new int[] {};
+		
+		int result = stock.maxProfit(prices);
+		
+		System.out.println("output: " + result);
 	}
 	
 	//@Test
@@ -2152,7 +2196,7 @@ public class L0200_TestSuite {
 		System.out.println(Util.printList(head));
 	}
 	
-	@Test
+	//@Test
 	public void L0238_ProductArrayExceptSelf() {
 		L0238_ProductArrayExceptSelf product = new L0238_ProductArrayExceptSelf();
 		
@@ -2161,5 +2205,972 @@ public class L0200_TestSuite {
 		int[] output = product.productExceptSelf(nums);
 		
 		System.out.println(Util.printArray(output));
+	}
+	
+	//@Test
+	public void L0224_BasicCalculator() {
+		L0224_BasicCalculator calculator = new L0224_BasicCalculator();
+		
+		/*
+		 * "1 + 1" = 2
+		 * " 2-1 + 2 " = 3
+		 * "(1+(4+5+2)-3)+(6+8)" = 23
+		 * "2147483647"
+		 */
+		String s = "2147483647";
+		
+		int result = calculator.calculate(s);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0227_BasicCalculatorII() {
+		L0227_BasicCalculatorII calculator = new L0227_BasicCalculatorII();
+		
+		/*
+		 * "3+2*2" = 7
+		 * " 3/2 " = 1
+		 * " 3+5 / 2 " = 5
+		 * "2147483647"
+		 */
+		String s = " 3+5 / 2 ";
+		
+		int result = calculator.calculate(s);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0233_NumberDigitOne() {
+		L0233_NumberDigitOne digitOne = new L0233_NumberDigitOne();
+		
+		//int n = 5;
+		//int n = 11;
+		int n = 102;
+		
+		int result = digitOne.countDigitOne(n);
+						
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0209_MinimumSizeSubarraySum() {
+		L0209_MinimumSizeSubarraySum minSubarray = new L0209_MinimumSizeSubarraySum();
+		
+		//int[] nums = new int[] {2,3,1,2,4,3};
+		//int[] nums = new int[] {2, 3};
+		int[] nums = new int[] {2, 3, 4, 1, 1, 1, 7};
+		int s = 7;
+		
+		//int[] nums = new int[] {1, 2, 3, 4, 5};
+		//int s = 11;
+		
+		int result = minSubarray.minSubArrayLen(s, nums);
+						
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0152_MaxProductSubarray() {
+		L0152_MaxProductSubarray maxProductSubarray = new L0152_MaxProductSubarray();
+		
+		//int[] nums = new int[] {-3, 4, 0, -1, 3, 0, -1, 2}; // 4
+		//int[] nums = new int[] {2};		//2
+		int[] nums = new int[] {2, 3, -2, 4}; //6
+		
+		int result = maxProductSubarray.maxProduct(nums);
+						
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0221_MaximumSquare() {
+		L0221_MaximumSquare square = new L0221_MaximumSquare();
+		
+		/*
+		 * 1 0 1 0 0
+		 * 1 0 1 1 1
+		 * 1 1 1 1 1
+		 * 1 0 0 1 0
+		 */
+		
+		char[][] matrix = new char[4][];
+		matrix[0] = new char[] {'1', '0', '1', '0', '0'};
+		matrix[1] = new char[] {'1', '0', '1', '1', '1'};
+		matrix[2] = new char[] {'1', '1', '1', '1', '1'};
+		matrix[3] = new char[] {'1', '0', '0', '1', '0'};
+		
+		int result = square.maximalSquare(matrix);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0085_MaximalRectangle() {
+		L0085_MaximalRectangle rectangle = new L0085_MaximalRectangle();
+		
+		/*
+		 * 1 0 1 0 0
+		 * 1 0 1 1 1
+		 * 1 1 1 1 1
+		 * 1 0 0 1 0
+		 */
+		
+		char[][] matrix = new char[4][];
+		matrix[0] = new char[] {'1', '0', '1', '0', '0'};
+		matrix[1] = new char[] {'1', '0', '1', '1', '1'};
+		matrix[2] = new char[] {'1', '1', '1', '1', '1'};
+		matrix[3] = new char[] {'1', '0', '0', '1', '0'};
+		
+		int result = rectangle.maximalRectangle(matrix);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0240_Search2DMatrixII() {
+		L0240_Search2DMatrixII searchMatrix = new L0240_Search2DMatrixII();
+		
+		/*
+		 *   [1,   4,  7, 11, 15],
+		 *   [2,   5,  8, 12, 19],
+		 *   [3,   6,  9, 16, 22],
+		 *   [10, 13, 14, 17, 24],
+		 *   [18, 21, 23, 26, 30]
+		 */
+		
+		int target = 5;
+		int[][] matrix = new int[5][];
+		matrix[0] = new int[] {1, 4, 7, 11, 15};
+		matrix[1] = new int[] {2, 5, 8, 12, 19};
+		matrix[2] = new int[] {3, 6, 9, 16, 22};
+		matrix[3] = new int[] {10, 13, 14, 17, 24};
+		matrix[4] = new int[] {18, 21, 23, 26, 30};
+		
+		boolean result = searchMatrix.searchMatrix(matrix, target);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0084_LargestRectangleHistogram() {
+		L0084_LargestRectangleHistogram recHistogram = new L0084_LargestRectangleHistogram();
+		
+		//int height[] = new int[] {1, 3, 4, 0 };
+		int height[] = new int[] {2,1,5,6,2,3};
+		
+		//int height[] = new int[] {2,1,2};
+		//int height[] = new int[] {1, 3, 4, 1, 2};
+		
+		int result = recHistogram.largestRectangleArea(height);
+		
+		System.out.println(result);
+	}
+
+	//@Test
+	public void L0032_LongestValidParentheses() {
+		L0032_LongestValidParentheses parenthesis = new L0032_LongestValidParentheses();
+		
+		String s = "(()()";
+		//String s = "(((())))()(()";
+		
+		int result = parenthesis.longestValidParentheses(s);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0148_SortList() {
+		L0148_SortList sort = new L0148_SortList();
+		
+		int[] in = new int[] {3,2,6,5,0,3, 1, 10, 9};
+		//int[] in = new int[] {3, 1};
+		
+		ListNode head = Util.createList(in);
+		System.out.println("input: " + Util.printList(head));
+		
+		ListNode newHead = sort.sortList(head);
+		
+		System.out.println("output: " + Util.printList(newHead));
+	}
+	
+	//@Test
+	public void L0179_LargestNumber() {
+		L0179_LargestNumber largestNumber = new L0179_LargestNumber();
+		
+		int[] nums = new int[] {3, 30, 34, 5, 9};
+		
+		String result = largestNumber.largestNumber(nums);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0056_MergeIntervals() {
+		L0056_MergeIntervals mergeIntervals = new L0056_MergeIntervals();
+		
+		List<Interval> intervals = new ArrayList<Interval>();
+		Interval i1 = new Interval(1, 7);
+		intervals.add(i1);
+
+		Interval i2 = new Interval(2, 6);
+		intervals.add(i2);
+		
+		Interval i3 = new Interval(8, 10);
+		intervals.add(i3);
+		
+		Interval i4 = new Interval(15, 18);
+		intervals.add(i4);
+
+		List<Interval> result = mergeIntervals.merge(intervals);
+		
+		for (Interval inv : result) 
+			System.out.println("output: (" + inv.start + ", " + inv.end + ")");		
+	}
+	
+	//@Test
+	public void L0057_InsertInterval() {
+		L0057_InsertInterval insertIntervals = new L0057_InsertInterval();
+
+		List<Interval> intervals = new ArrayList<Interval>();
+		Interval i1 = new Interval(1, 2);
+		intervals.add(i1);
+
+		Interval i2 = new Interval(3, 5);
+		intervals.add(i2);
+		
+		Interval i3 = new Interval(6,7);
+		intervals.add(i3);
+		
+		Interval i4 = new Interval(8,10);
+		intervals.add(i4);
+
+		Interval i5 = new Interval(12, 16);
+		intervals.add(i5);
+		
+		Interval newInterval = new Interval(4, 9);
+
+		//Given [1,2],[3,5],[6,7],[8,10],[12,16], insert and merge [4,9] in as [1,2],[3,10],[12,16]
+		/**
+		List<Interval> intervals = new ArrayList<Interval>();
+		Interval i1 = new Interval(1,3);
+		intervals.add(i1);
+
+		Interval i2 = new Interval(6,9);
+		intervals.add(i2);
+		
+		Interval newInterval = new Interval(2,5);
+		 */
+		//[1,3],[6,9], insert and merge [2,5] in as [1,5],[6,9].
+		//[3,4],[6,9], insert and merge [1, 2] in as [1,2],[3,4],[6,9].
+		/**
+		List<Interval> intervals = new ArrayList<Interval>();
+		Interval i1 = new Interval(1, 5);
+		intervals.add(i1);
+		
+		Interval newInterval = new Interval(2, 7);
+		*/
+		List<Interval> result = insertIntervals.insert(intervals, newInterval);
+		
+		for (Interval inv : result) 
+			System.out.println("output: (" + inv.start + ", " + inv.end + ")");		
+	}
+	
+	//@Test
+	public void L0164_MaximumGap() {
+		L0164_MaximumGap maxGap = new L0164_MaximumGap();
+		
+		int[] nums = new int[] {3, 30, 34, 5, 9};
+		
+		int result = maxGap.maximumGap(nums);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0220_ContainsDuplicateIII() {
+		L0220_ContainsDuplicateIII dupIII = new L0220_ContainsDuplicateIII();
+		 
+		/*
+		int[] nums = new int[] {-1,2147483647};		
+		int k = 1;
+		int t = 2147483647;
+		*/
+
+		int[] nums = new int[] {3, 20, 34, 15, 50};		
+		int k = 1;
+		int t = 10;
+
+		boolean result = dupIII.containsNearbyAlmostDuplicate(nums, k, t);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void LRUCache() {
+		LRUCache cache = new LRUCache(2);
+		/*
+		cache.set(2, 1);
+		cache.set(2, 2);		
+		int result = cache.get(2);
+		System.out.println("output: " + result);
+		cache.set(1, 1);
+		cache.set(4, 1);
+		result = cache.get(2);
+		System.out.println("output: " + result);
+		*/		
+		
+		int result = cache.get(2);
+		System.out.println("output: " + result);
+		cache.set(2, 6);
+		result = cache.get(1);
+		System.out.println("output: " + result);
+		cache.set(1, 5);		
+		cache.set(1, 2);
+		result = cache.get(1);
+		System.out.println("output: " + result);
+		result = cache.get(2);
+		System.out.println("output: " + result);
+		
+	}
+	
+	//@Test
+	public void L0045_JumpGameII() {
+		L0045_JumpGameII jumpGameII = new L0045_JumpGameII();
+		
+		//int[] nums = new int[] {2,3,1,1,4};
+		//int[] nums = new int[] {1, 2};
+		//int[] nums = new int[] {7,0,9,6,9,6,1,7,9,0,1,2,9,0,3};
+		int[] nums = new int[] {1,2,0,0,0};
+		
+		int result = jumpGameII.jump(nums);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0135_Candy() {
+		L0135_Candy candy = new L0135_Candy();
+		
+		//int[] ratings = new int[] {2,3,1,1,4};
+		//int[] ratings = new int[] {1,5,3,1};
+		//int[] ratings = new int[] {1, 2, 2};
+		//int[] ratings = new int[] {3,2,1,1,4,3,3};
+		//int[] ratings = new int[] {1, 2, 4, 4, 3};
+		int[] ratings = new int[] {1, 2, 2};
+		
+		int result = candy.candy(ratings);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0044_WildcardMatch() {
+		L0044_WildcardMatch wildcard = new L0044_WildcardMatch();
+		
+		//String s = "aaabb";
+		//String p = "a*aa**b*";
+		String s = "aaa";
+		String p = "*a";
+		
+		boolean result = wildcard.isMatch(s, p);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0241_AddParentheses() {
+		L0241_AddParentheses parentheses = new L0241_AddParentheses();
+		
+		//String input = "2-1-1"; //Output: [0, 2]
+		String input = "2*3-4*5"; //Output: [-34, -14, -10, -10, 10]
+		
+		List<Integer> result = parentheses.diffWaysToCompute(input);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0023_MergeKSortedList() {
+		L0023_MergeKSortedList mergeKList = new L0023_MergeKSortedList();
+		
+		ListNode[] lists = new ListNode[3];
+		
+		int[] in = new int[] {1, 3, 5, 7};
+		lists[0] = Util.createList(in);
+		in = new int[] {2, 6, 8, 10, 12};
+		lists[1] = Util.createList(in);
+		in = new int[] {2, 14, 20};
+		lists[2] = Util.createList(in);
+		
+		ListNode result = mergeKList.mergeKLists(lists);
+		
+		System.out.println("output: " + Util.printList(result));
+	}
+	
+	//@Test
+	public void L0041_FirstMissingPositive() {
+		L0041_FirstMissingPositive missingPositive = new L0041_FirstMissingPositive();
+
+		/* 
+		 * Given [1,2,0] return 3,
+		 * and [3,4,-1,1] return 2
+		 * {-1,4,2,1,9,10}
+		 */
+		int[] in = new int[] {-1,4,2,1,9,10};
+		
+		int result = missingPositive.firstMissingPositive(in);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0004_MedianTwoSortedArray() {
+		L0004_MedianTwoSortedArray median = new L0004_MedianTwoSortedArray();
+
+		/*
+		int[] nums1 = new int[] {1, 3, 5, 7};
+		int[] nums2 = new int[] {2, 6, 8, 10, 12};
+		*/
+		int[] nums1 = new int[] {};
+		int[] nums2 = new int[] {2, 3};
+		double result = median.findMedianSortedArrays(nums1, nums2);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0258_AddDigits() {
+		L0258_AddDigits digitRoot = new L0258_AddDigits();
+
+		int num = 36;
+		int result = digitRoot.addDigits(num);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0239_SlidingWIndowMax() {
+		L0239_SlidingWIndowMax window = new L0239_SlidingWIndowMax();
+
+		//int[] nums = new int[] {1,3,-1,-3,5,3,6,7}; 
+		int[] nums = new int[] {1,3,1,2,0,5}; 
+		int k = 3;
+		
+		int[] result = window.maxSlidingWindow(nums, k);
+		
+		System.out.println("output: " + Util.printArray(result));
+	}
+	
+	//@Test
+	public void L0263_UglyNumber() {
+		L0263_UglyNumber ugly = new L0263_UglyNumber();
+		
+		int num = 20;
+		
+		boolean result = ugly.isUgly(num);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0264_UglyNumberII() {
+		L0264_UglyNumberII ugly = new L0264_UglyNumberII();
+		
+		int n = 10;
+		
+		int result = ugly.nthUglyNumber(n);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0313_SuperUglyNumber() {
+		
+		L0313_SuperUglyNumber ugly = new L0313_SuperUglyNumber();
+		
+		int n = 12;
+		int[] primes = new int[] {2, 7, 13, 19}; // [1, 2, 4, 7, 8, 13, 14, 16, 19, 26, 28, 32]
+		int result = ugly.nthSuperUglyNumber(n, primes);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0260_SingleNumberIII() {
+		L0260_SingleNumberIII single = new L0260_SingleNumberIII();
+		
+		int[] nums = {1, 2, 1, 3, 2, 5};
+		
+		int[] result = single.singleNumber(nums);
+		
+		System.out.println("output: " + Util.printArray(result));
+	}
+	
+	//@Test
+	public void ShortestRepeatInString() {
+		ShortestRepeatInString pattern = new ShortestRepeatInString();
+		
+		//String str = "BCBC";
+		String str = "HELLOHELL";
+		
+		String result = pattern.getShortestRepeat(str);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0268_MissingNumber() {
+		L0268_MissingNumber missing = new L0268_MissingNumber();
+		
+		int[] nums = {0, 1, 3};
+		
+		int result = missing.missingNumber(nums);
+		
+		System.out.println("output: " + result);
+	}
+	
+	//@Test
+	public void L0278_FirstBadVersion() {
+		L0278_FirstBadVersion badVersion = new L0278_FirstBadVersion();
+		
+		int n = 12;
+		
+		int result = badVersion.firstBadVersion(n);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0283_MoveZeros() {
+		L0283_MoveZeros moveZeros = new L0283_MoveZeros();
+		
+		int[] nums = {0, 1, 0, 3, 12};
+		
+		moveZeros.moveZeroes(nums);
+		
+		System.out.println(Util.printArray(nums));
+	}
+	
+	//@Test
+	public void L0290_WordPattern() {
+		L0290_WordPattern wordPattern = new L0290_WordPattern();
+				 
+		//String pattern = "abba";
+		//String str = "dog cat cat dog";		
+		//String str = "dog cat cat fish";
+		//String str = "dog dog dog dog";	
+		String pattern = "aaaa";
+		String str = "dog cat cat dog";
+		
+		boolean result = wordPattern.wordPattern(pattern, str);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0279_PerfectSquares() {
+		L0279_PerfectSquares perfectSquare = new L0279_PerfectSquares();
+		
+		int n = 13;
+		
+		int result = perfectSquare.numSquares(n);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0273_IntegerToEnglishWords() {
+		L0273_IntegerToEnglishWords intToWord = new L0273_IntegerToEnglishWords();
+		
+		//int num = 1234567;
+		//int num = 1000000001;
+		//int num = 12345;
+		int num = 123;
+		
+		String result = intToWord.numberToWords(num);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0289_GameOfLife() {
+		L0289_GameOfLife gameOfLife = new L0289_GameOfLife();
+		
+		int[][] board = new int[5][];
+		for (int i = 0; i < 5; i++) {
+			board[i] = new int[7];
+			Arrays.fill(board[i], 0);
+		}
+		
+		Util.printMatrix(board);
+		
+		gameOfLife.gameOfLife(board);
+		
+		Util.printMatrix(board);
+	}
+	
+	//@Test
+	public void L0274_HIndex() {
+		L0274_HIndex hIndex = new L0274_HIndex();
+		
+		int[] citations = new int[] {3, 0, 6, 1, 5};
+		
+		int result = hIndex.hIndex1(citations);
+		
+		System.out.println(result);		
+	}
+	
+	//@Test
+	public void L0275_HIndexII() {
+		L0275_HIndexII hIndexII = new L0275_HIndexII();
+		
+		int[] citations = new int[] {0, 1, 2, 2, 5, 6};
+		//int[] citations = new int[] {0, 0, 0, 0};
+		//int[] citations = new int[] {0,  0, 0, 1};
+		//int[] citations = new int[] {100}; 
+		
+		int result = hIndexII.hIndex(citations);
+		
+		System.out.println(result);	
+	}
+	
+	//@Test
+	public void L0287_FindDuplicateNumber() {
+		L0287_FindDuplicateNumber dup = new L0287_FindDuplicateNumber();
+		
+		//int[] nums = new int[] {1, 2, 3, 8, 4, 5, 6, 7, 8, 9};
+		int[] nums = new int[] {1, 2, 3, 5, 3, 4};
+		
+		int result = dup.findDuplicate1(nums);
+		
+		System.out.println(result);	
+	}
+	
+	//@Test
+	public void L299_BullsCows() {
+		L299_BullsCows bc = new L299_BullsCows();
+		
+		//String secret = "1123";
+		//String guess = "0111";
+		
+		//String secret = "1807";
+		//String guess = "7810";
+		
+		String secret = "9648";
+		String guess = "6734";
+		
+		String result = bc.getHint(secret, guess);
+		
+		System.out.println(result);	
+	}
+	
+	//@Test
+	public void L0300_LongestIncreasingSubsequence() {
+		L0300_LongestIncreasingSubsequence lis = new L0300_LongestIncreasingSubsequence();
+		
+		//int[] nums = new int[] {10, 9, 2, 5, 3, 7, 101, 18, 19};
+		//int[] nums = new int[] {1,3,6,7,9,4,10,5,6};
+		
+		int[] nums = new int[] {10, 10, 9, 8, 11};
+		
+		int result = lis.lengthOfLIS(nums);
+		
+		System.out.println(result);	
+	}
+	
+	//@Test
+	public void PeekingIterator() {
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		
+		Iterator<Integer> iter = list.iterator();
+		PeekingIterator pIterator = new PeekingIterator(iter);
+		
+		System.out.println(pIterator.hasNext());
+		System.out.println(pIterator.peek());
+		System.out.println(pIterator.next());
+		System.out.println(pIterator.next());
+		System.out.println(pIterator.peek());
+		
+	}
+	
+	//@Test
+	public void NumArray() {
+		//int[] nums = new int[] {-2, 0, 3, -5, 2, -1};
+		int[] nums = new int[] {};
+		NumArray array = new NumArray(nums);
+		
+		// sumRange(0, 2) -> 1 sumRange(2, 5) -> -1 sumRange(0, 5) -> -3 
+		//int result = array.sumRange(0,  2);
+		//int result = array.sumRange(2, 5);
+		int result = array.sumRange(0, 0);
+		
+		System.out.println(result);	
+	}
+	
+	//@Test
+	public void Codec() {
+		Codec codec = new Codec();
+		
+		//String str = "1,2,#,#,3,4,#,#,5,#,#";
+		String str = "-1,0,#,#,1,#,#";
+		
+		// Your Codec object will be instantiated and called as such:
+		// Codec codec = new Codec();
+		// codec.deserialize(codec.serialize(root));
+				
+		// Your Codec object will be instantiated and called as such:
+		String result = codec.serialize(codec.deserialize(str));
+		
+		System.out.println(result);			
+	}
+	
+	//@Test
+	public void CodecBFS() {
+		CodecBFS codec = new CodecBFS();
+		
+		//String str = "1 2 null null 3 4 null null 5 null null";
+		String str = "1 2 3 null null 4 5";
+		//String str = "";
+		// Your Codec object will be instantiated and called as such:
+		// Codec codec = new Codec();
+		// codec.deserialize(codec.serialize(root));
+				
+		// Your Codec object will be instantiated and called as such:
+		String result = codec.serialize(codec.deserialize(str));
+		
+		System.out.println(result);			
+	}
+	
+	//@Test
+	public void NumMatrix() {
+		/*
+		int[][] matrix = new int[5][];
+		matrix[0] = new int[] {3, 0, 1, 4, 2};displa
+		matrix[1] = new int[] {5, 6, 3, 2, 1};
+		matrix[2] = new int[] {1, 2, 0, 1, 5};
+		matrix[3] = new int[] {4, 1, 0, 1, 7};
+		matrix[4] = new int[] {1, 0, 3, 0, 5};
+		*/
+		
+		int[][] matrix = new int[1][];
+		matrix[0] = new int[]{2};
+		
+		NumMatrix numMatrix = new NumMatrix(matrix);
+		
+		//int result = numMatrix.sumRegion(2,  1,  4,  3); //8
+		//int result = numMatrix.sumRegion(1, 1, 2, 2); //11
+		//int result = numMatrix.sumRegion(1, 2, 2, 4); //12
+		
+		int result = numMatrix.sumRegion(0, 0, 0, 0); //12
+		System.out.println(result);		
+	}
+	
+	//@Test
+	public void L0029_DivideTwoIntegers() {
+		L0029_DivideTwoIntegers division = new L0029_DivideTwoIntegers();
+		
+		int dividend = -1010369383;
+		int divisor = -2147483648;
+		
+		//int dividend = Integer.MAX_VALUE;
+		//int divisor = 2;
+		
+		int result = division.divide(dividend, divisor);
+		
+		System.out.println(result);			
+	}
+	
+	//@Test
+	public void L0306_AdditiveNumber() {
+		L0306_AdditiveNumber additiveNum = new L0306_AdditiveNumber();
+		
+		//String num = "112358";
+		//String num = "199100199";
+		//String num = "11236";
+		//String num = "198019823962";
+		String num = "00000";
+		
+		boolean result = additiveNum.isAdditiveNumber(num);
+		
+		System.out.println(result);		
+	}
+	
+	//@Test
+	public void L0307_RangeSumQueryMutable() {
+		int[] nums = new int[] {1, 3, 5};
+		
+		L0307_RangeSumQueryMutable rangeSum = new L0307_RangeSumQueryMutable(nums);
+		
+		
+		rangeSum.update(1, 2);
+		int result = rangeSum.sumRange(0, 2);
+		
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0307_RangeSumQueryMutableFaster() {
+		//int[] nums = new int[] {1, 3, 5};
+		//int[] nums = new int[] {-1};
+		int[] nums = new int[] {7, 2, 7, 2, 0};
+		
+		L0307_RangeSumQueryMutableFaster rangeSum = new L0307_RangeSumQueryMutableFaster(nums);
+		
+		//int result = rangeSum.sumRange(0, 1);
+		//int result = rangeSum.sumRange(0, 0);
+		int result = rangeSum.sumRange(4, 4);
+		System.out.println(result);
+		
+		//rangeSum.update(1, 10);
+		//rangeSum.update(0, 1);
+		rangeSum.update(4, 6);
+		rangeSum.update(0, 2);
+		rangeSum.update(0, 9);
+		
+		//result = rangeSum.sumRange(0, 1);	
+		//result = rangeSum.sumRange(0, 0);
+		result = rangeSum.sumRange(4, 4);
+		System.out.println(result);
+		
+		rangeSum.update(3, 8);
+		result = rangeSum.sumRange(0, 4);
+		System.out.println(result);
+		
+		rangeSum.update(4, 1);
+		result = rangeSum.sumRange(0, 3);
+		System.out.println(result);
+		
+		result = rangeSum.sumRange(0, 4);
+		System.out.println(result);
+		
+		rangeSum.update(0, 4);
+		result = rangeSum.sumRange(0, 3);
+		System.out.println(result);
+	}
+	
+	//@Test
+	public void L0133_CloneGraph() {
+		L0133_CloneGraph cloneGraph = new L0133_CloneGraph();
+		
+		String str = "0,1,2#1,2#2,2";
+		//String str = "0,1,5#1,2,5#2,3#3,4,4#4,5,5#5";
+		
+		UndirectedGraphNode node =  Graph.deserialize(str);
+		
+		UndirectedGraphNode newNode = cloneGraph.cloneGraph(node);
+		
+		System.out.println(Graph.serialize(newNode));
+	}
+	
+	//@Test
+	public void Graph() {
+	
+		String str = "0,1,2#1,2#2,2";
+		//String str = "0,1,5#1,2,5#2,3#3,4,4#4,5,5#5";
+		UndirectedGraphNode node =  Graph.deserialize(str);
+		
+		System.out.println(node.label);
+		
+		String result = Graph.serialize(node);
+		
+		System.out.println(result);		
+	}
+	
+	//@Test
+	public void L0207_CourseSchedule() {
+		L0207_CourseSchedule cs = new L0207_CourseSchedule();
+		
+		int numCourses = 3;
+		int[][] prerequisites = new int[2][2];
+		
+		prerequisites[0] = new int[] {0, 1};
+		prerequisites[1] = new int[] {1, 2};
+		
+		boolean result = cs.canFinish(numCourses, prerequisites);
+		
+		System.out.println(result);	
+	}
+	
+	//@Test 
+	public void L0210_CourseScheduleII() {
+		L0210_CourseScheduleII cs = new L0210_CourseScheduleII();
+
+		/*
+		int numCourses = 2;
+		int[][] prerequisites = new int[2][];
+		
+		prerequisites[0] = new int[] {1, 0};
+		prerequisites[1] = new int[] {0, 1};
+		 */	
+
+		int numCourses = 4;
+		int[][] prerequisites = new int[4][];
+		
+		prerequisites[0] = new int[] {1, 0};
+		prerequisites[1] = new int[] {2, 0};
+		prerequisites[2] = new int[] {3, 1};
+		prerequisites[3] = new int[] {3, 2};
+		
+		int[] result = cs.findOrder(numCourses, prerequisites);
+		
+		System.out.println(Util.printArray(result));	
+	}
+	
+	@Test 
+	public void L0310_MinHeightTree() {
+		L0310_MinHeightTree mht = new L0310_MinHeightTree();
+
+		/*
+		 * Given n = 4, edges = [[1, 0], [1, 2], [1, 3]]
+		 *         0
+		 *         |
+		 *         1
+		 *        / \
+		 *       2   3
+		 * return [1]
+		 */ 
+
+		/*
+		int numCourses = 4;
+		int[][] prerequisites = new int[3][];
+		
+		prerequisites[0] = new int[] {1, 0};
+		prerequisites[1] = new int[] {1, 2};		
+		prerequisites[2] = new int[] {1, 3};
+		*/
+		/*
+		 * Example 2:
+		 * 
+		 * Given n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
+		 * 
+		 *      0  1  2
+		 *       \ | /
+		 *         3
+		 *         |
+		 *         4
+		 *         |
+		 *         5
+		 * return [3, 4]
+		 */
+
+		int numCourses = 6;
+		int[][] prerequisites = new int[5][];
+		
+		prerequisites[0] = new int[] {0, 3};
+		prerequisites[1] = new int[] {1, 3};
+		prerequisites[2] = new int[] {2, 3};
+		prerequisites[3] = new int[] {4, 3};
+		prerequisites[4] = new int[] {5, 4};
+
+		
+		List<Integer> result = mht.findMinHeightTrees(numCourses, prerequisites);
+		
+		System.out.println(result);	
 	}
 }

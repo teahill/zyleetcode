@@ -47,8 +47,8 @@ package com.leetcode.zyang;
  *         take a rest, by just using the old decision at i - 1, or buy
  *         at/before i - 1, then sell at i. So we get the following formula:
  * 
- *         buy[i] = Math.max(buy[i - 1], sell[i - 2] - prices[i]); sell[i] =
- *         Math.max(sell[i - 1], buy[i - 1] + prices[i]); 
+ *         buy[i] = Math.max(buy[i - 1], sell[i - 2] - prices[i]); 
+ *         sell[i] = Math.max(sell[i - 1], buy[i - 1] + prices[i]); 
  *         
  *         3. Optimize to O(1) Space
  * 
@@ -59,7 +59,8 @@ package com.leetcode.zyang;
  *         s0 represent sell[i - 2], sell[i - 1], sell[i] Then arrays turn into
  *         Fibonacci like recursion:
  * 
- *         b0 = Math.max(b1, s2 - prices[i]); s0 = Math.max(s1, b1 + prices[i]);
+ *         b0 = Math.max(b1, s2 - prices[i]); 
+ *         s0 = Math.max(s1, b1 + prices[i]);
  *         
  *         4. Write Code in 5 Minutes
  * 

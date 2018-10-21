@@ -2,6 +2,8 @@ package com.leetcode.zyang;
 
 import java.util.Stack;
 
+//http://www.geeksforgeeks.org/largest-rectangle-under-histogram/
+
 public class L0084_LargestRectangleHistogram {
 
 	public L0084_LargestRectangleHistogram() {
